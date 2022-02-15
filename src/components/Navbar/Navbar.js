@@ -43,6 +43,7 @@ const Nav = styled.nav`
   box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
   height: 75px;
   display: flex;
+  position: relative;
   justify-content: space-around;
   padding: 0.5rem;
   z-index: 10;
@@ -52,7 +53,7 @@ const NavLink = styled(Link)`
   font-family: 'Karla';
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 29px;
   color: #000000;
   display: flex;

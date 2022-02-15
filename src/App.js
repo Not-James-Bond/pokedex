@@ -6,6 +6,7 @@ import Home from './components/Home';
 import PokeDex from './components/PokeDex';
 import Legendaries from './components/Legendaries';
 import Documentation from './components/Documentation';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/legendaries" element={<Legendaries />} />
         <Route path="/documentation" element={<Documentation />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
