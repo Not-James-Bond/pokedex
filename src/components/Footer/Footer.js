@@ -19,8 +19,7 @@ const Span = styled.span`
   background-blend-mode: overlay;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
-
+  padding-bottom: 0.5rem;
   position: fixed;
   top: 94.63%;
   bottom: 5.22%;
@@ -30,14 +29,18 @@ const Span = styled.span`
     flex-direction: column-reverse;
     justify-content: center;
   }
+  @media screen and (max-width: 426px) {
+    font-size: 3vw;
+  }
 `;
 
 const Div = styled.div`
-  padding-left: 3em;
-  padding-right: 3em;
+  padding-left: 6em;
+  padding-right: 6em;
 
   @media screen and (max-width: 768px) {
-    padding-left: 0em;
-    padding-right: 0em;
+    align-self: center;
+    padding-left: 2em;
+    padding-right: 2em;
   }
 `;
