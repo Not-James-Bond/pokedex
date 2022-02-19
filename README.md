@@ -1,2 +1,3 @@
 # pokedex
-React PokeDex aoo
+
+React PokeDex app
