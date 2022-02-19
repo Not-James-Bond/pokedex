@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
-import logo from '../img/Logo.svg';
+import logo from '../../assets/images/Logo.svg';
 
 function Navbar() {
   return (
@@ -34,14 +34,14 @@ function Navbar() {
 export default Navbar;
 
 const logoStyle = {
-  width: '150px',
-  height: '55px',
+  minWidth: '10vw',
+  height: 'auto',
 };
 
 const Nav = styled.nav`
   background: #f5db13;
   box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
-  height: 75px;
+  height: 10vh;
   display: flex;
   position: relative;
   justify-content: space-around;
@@ -53,13 +53,13 @@ const NavLink = styled(Link)`
   font-family: 'Karla';
   font-style: normal;
   font-weight: normal;
-  font-size: 22px;
-  line-height: 29px;
+  font-size: 2vw;
+  line-height: 2.5vh;
   color: #000000;
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0 1.3vw;
   cursor: pointer;
 
   &.active {

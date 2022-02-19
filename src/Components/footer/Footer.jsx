@@ -16,6 +16,7 @@ const Span = styled.span`
   font-family: 'Karla';
   font-weight: bold;
   box-sizing: border-box;
+  font-size: 1.1vw;
   background-blend-mode: overlay;
   display: flex;
   justify-content: space-between;
@@ -28,6 +29,7 @@ const Span = styled.span`
   @media screen and (max-width: 768px) {
     flex-direction: column-reverse;
     justify-content: center;
+    font-size: 2vw;
   }
   @media screen and (max-width: 426px) {
     font-size: 3vw;

@@ -1,27 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
-import banner from './img/Banner.svg';
+import banner from '../../assets/images/Banner.svg';
+import Footer from '../footer/Footer';
+import Navbar from '../navBar/NavBar';
+import provider from '../../utils/firebase';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
+const SignInWithFirebase = () => {
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+    .then(res => {
+      console.log(res);
+      const credential = GoogleAuthProvider.credentialFromResult(res);
+      const token = credential.accessToken;
+      // // The signed-in user info.
+      // const user = res.user;
+    })
+    .catch(err => {
+      console.log(err);
+      // // Handle Errors here.
+      // const errorCode = err.code;
+      // const errorMessage = err.message;
+      // // The email of the user's account used.
+      // const email = err.email;
+      // // The AuthCredential type that was used.
+      // const credential = GoogleAuthProvider.credentialFromError(err);
+    });
+};
 
 function Home() {
   return (
-    <Container>
-      <TextContainer>
-        <span style={{ font: 'Karla', fontWeight: 'bold' }}>Find</span> all your
-        favorite{' '}
-        <span style={{ font: 'Karla', fontWeight: 'bold' }}>Pokemon</span>
-        <TextContainerSmall>
-          You can know the type of Pokemon, its strengths, disadvantages and
-          abilities
-          <p>
-            <LoginButton>Google</LoginButton>
-          </p>
-        </TextContainerSmall>
-      </TextContainer>
+    <>
+      <Navbar />
+      <Container>
+        <TextContainer>
+          <span style={{ font: 'Karla', fontWeight: 'bold' }}>Find</span> all
+          your favorite{' '}
+          <span style={{ font: 'Karla', fontWeight: 'bold' }}>Pokemon</span>
+          <TextContainerSmall>
+            You can know the type of Pokemon, its strengths, disadvantages and
+            abilities
+            <p>
+              <LoginButton onClick={SignInWithFirebase}>Google</LoginButton>
+            </p>
+          </TextContainerSmall>
+        </TextContainer>
 
-      <ImageContainer>
-        <Img src={banner} alt="" />
-      </ImageContainer>
-    </Container>
+        <ImageContainer>
+          <Img src={banner} alt="" />
+        </ImageContainer>
+      </Container>
+      <Footer />
+    </>
   );
 }
 
@@ -48,10 +78,11 @@ const Container = styled.div`
     flex-flow: column nowrap;
     background-size: contain;
     padding-bottom: 3em;
-    min-height: 52em;
+    min-height: 56em;
   }
-  @media screen and (max-width: 426px) {
-    min-height: 38em;
+
+  @media screen and (max-width: 768px) {
+    min-height: 82em;
   }
 `;
 const TextContainer = styled.div`
@@ -113,14 +144,15 @@ const LoginButton = styled.button`
   font-family: Karla;
   font-style: normal;
   font-weight: bold;
-  font-size: 1.4vw;
+  font-size: 1.5vw;
   line-height: 3.5vh;
-  padding: 2vh 4vw;
+  padding: 1.5vh 6vw;
   text-align: center;
-
+  cursor: pointer;
   @media screen and (max-width: 768px) {
     margin-top: 3vh;
-    padding: 2vh 8vw;
+    padding: 1em 8em;
+    font-size: 2vw;
   }
   @media screen and (max-width: 426px) {
     padding: 2vh 25vw;
