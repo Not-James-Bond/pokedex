@@ -125,9 +125,9 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-/src/utils/firebase.jsx
-/src/utils/firebase.jsx
-./src/utils/firebase.jsx
-../src/utils/firebase.jsx
+/src/auth/firebase.jsx
+/src/auth/firebase.jsx
+./src/auth/firebase.jsx
+../src/auth/firebase.jsx
 firebase.jsx
 

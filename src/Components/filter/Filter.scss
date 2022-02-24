@@ -1,0 +1,22 @@
+@import '../../theme/colors.scss';
+
+.select-box {
+  height: 2rem;
+  background: $CONCRETE;
+  /* blur8 */
+  box-shadow: 4px 4px 8px $BLACK_TRANS_SHADOW;
+}
+.form-container {
+  width: 150px;
+}
+.label-text {
+  margin-top: -11px;
+}
+@media (max-width: 767px) {
+  .form-container {
+    width: 80px;
+  }
+  .label-text {
+    margin-top: -13px;
+  }
+}

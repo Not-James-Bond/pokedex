@@ -1,95 +1,83 @@
 import React from 'react';
 
-import '../../styles/Modal.scss';
+import MainStat from './mainStat/MainStat';
+import StatBox from './StatBox/StatBox';
+import PokemonType from './PokemonType';
 
-import styled, { css } from 'styled-components';
+import { capitalize } from '../../utils/utils';
+
+import './Modal.scss';
+
 import closeIcon from '../../assets/images/closeIcon.svg';
 
-function Modal({ pokemonDetails, onClose }) {
+function Modal(props) {
+  const { pokemonDetails, closeModal, modalState } = props;
   const { name, abilities, game_indices, sprites, stats, types } =
     pokemonDetails;
   const official_artwork = 'official-artwork';
+
+  const onClose = () => {
+    closeModal(!modalState);
+    console.log('Modal onClick');
+  };
+  console.log(modalState);
   return (
-    <body className="BodyContainer">
-      <div className="ModalContainer">
-        <div className="CloseIconContainer">
+    <div className="body-container">
+      <div className="modal-container">
+        <div className="close-icon-container">
           <img
-            className="ImgClose"
+            className="img-close"
             src={closeIcon}
             onClick={onClose}
             alt="Close"
           />
         </div>
-        <div className="ModalCardContainer">
-          <div className="ImgContainer">
+        <div className="modal-card-container">
+          <div className="img-container">
             <img
-              className="PokemonImg"
+              className="poke-img"
               src={sprites && sprites.other[official_artwork].front_default}
               alt="Pokemon Img"
             />
             <span>
               {types &&
                 types.map((type, i) => {
-                  return i === 1 ? (
-                    <span className="PokemonTypeContainer2">
-                      {type.type.name}
-                    </span>
+                  return i === 0 ? (
+                    <PokemonType type={type && type.type} key={i} index={i} />
                   ) : (
-                    <span className="PokemonTypeContainer1">
-                      {type.type.name}
-                    </span>
+                    <PokemonType type={type && type.type} key={i} index={i} />
                   );
                 })}
             </span>
           </div>
-          <div className="DetailsContainer">
-            <div className="NameContainer">
-              <a>{name}</a>
-              <span className="PokemonIndex">
+          <div className="details-container">
+            <div className="name-container">
+              {capitalize(name)}
+              <span className="pokemon-index">
                 {game_indices && game_indices[0].game_index}
               </span>
             </div>
-            <div className="AbilitiesContainer">
-              <p className="AbilityHeading">Abilities</p>
-              <p className="Ability">
-                {abilities && abilities[0].ability.name}-
-                {abilities && abilities[1].ability.name}
+            <div className="abilities-container">
+              <p className="ability-heading">Abilities</p>
+              <p className="ability">
+                {abilities && capitalize(abilities[0].ability.name)} -{' '}
+                {abilities && capitalize(abilities[1].ability.name)}
               </p>
             </div>
-            <div className="MainStatsContainer">
-              <div className="HpContainer">
-                <div>HP</div>
-                <div>{stats && stats[0].base_stat}</div>
-                <div>ProgressBar</div>
-              </div>
-              <div className="SpeedContainer">
-                <div>Speed</div>
-                <div>{stats && stats[5].base_stat}</div>
-                <div>ProgressBar</div>
-              </div>
+            <div className="main-stats-container">
+              <MainStat name={'HP'} stats={stats && stats['0']} />
+              <MainStat name={'Speed'} stats={stats && stats['5']} />
             </div>
-            <div className="StatsContainer">
-              <div className="StatBox">
-                <div className="Circle">{stats && stats[2].base_stat}</div>
-                <div className="StatText">Defense</div>
-              </div>
-              <div className="StatBox">
-                <div className="Circle">{stats && stats[1].base_stat}</div>
-                <div className="StatText">Attack</div>
-              </div>
-              <div className="StatBox">
-                <div className="Circle">{stats && stats[4].base_stat}</div>
-                <div className="StatText">SP Defense</div>
-              </div>
-              <div className="StatBox">
-                <div className="Circle">{stats && stats[3].base_stat}</div>
-                <div className="StatText">SP Attack</div>
-              </div>
+            <div className="stats-container">
+              <StatBox statType={'Defense'} stats={stats && stats['2']} />
+              <StatBox statType={'Attack'} stats={stats && stats['1']} />
+              <StatBox statType={'SP Defense'} stats={stats && stats['4']} />
+              <StatBox statType={'SP Attack'} stats={stats && stats['3']} />
             </div>
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 

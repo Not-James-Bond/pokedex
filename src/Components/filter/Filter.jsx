@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -6,6 +7,9 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+
+import './Filter.scss';
+
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 5;
 const MenuProps = {
@@ -39,8 +43,8 @@ const names = [
 
   return (
     <div >
-      <FormControl sx={{ m: 0.7, width: 200,}} >
-        <InputLabel id="demo-multiple-checkbox-label">{props.labelName}</InputLabel>
+      <FormControl  className='form-container' sx={{ m: 1}} >
+        <InputLabel  className='label-text' >{props.labelName}</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
@@ -49,6 +53,7 @@ const names = [
           onChange={handleChange}
           input={<OutlinedInput label={props.labelName}/>}
           renderValue={(selected) => selected.join(', ')}
+          className = "select-box"
         >
           {names.map((name) => (
             <MenuItem key={name} value={name}>

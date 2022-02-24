@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@700&display=swap');
+@import '../../theme/colors.scss';
+
+.main-container {
+  height: 64rem;
+  left: 9.8rem;
+  position: relative;
+  top: 8rem;
+  width: 70.3rem;
+  border: 1px solid rgb(255, 255, 255);
+}
+.search-bar-container {
+  bottom: 45%;
+  left: 0%;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  height: 15rem;
+}
+.search-input {
+  background: $CONCRETE;
+  border: none;
+  height: 3.5rem;
+  border-radius: 2.5rem;
+  bottom: 65.09%;
+  box-shadow: 4px 4px 16px $BLACK_TRANS_SHADOW;
+  color: $MINE_SHAFT_TRANS;
+  font-family: Source Sans Pro;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: normal;
+  left: 0.09%;
+  padding-left: 1.25rem;
+  position: absolute;
+  right: -0.09%;
+  top: 15.34%;
+}
+.text-paragraph {
+  bottom: 72.48%;
+  color: $BLACK;
+  font-family: Karla;
+  font-size: 2.1rem;
+  font-style: normal;
+  font-weight: normal;
+  left: 4.29%;
+  letter-spacing: 0.1rem;
+  line-height: 2.5rem;
+  position: absolute;
+  right: 10.2%;
+  text-align: center;
+  top: 0%;
+}
+span {
+  font-weight: bold;
+}
+.filter-menu {
+  display: inline-flex;
+  left: 2rem;
+  position: absolute;
+  top: 8rem;
+}
+
+.card-container {
+  align-items: center;
+  cursor: pointer;
+  // height: 20rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 3.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(21.8rem, 1fr));
+  margin: 0 auto;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .main-container {
+    left: 1.5rem;
+    width: 25rem;
+  }
+  .search-input {
+    margin-top: 5rem;
+    margin-bottom: -3rem;
+    width: 26rem;
+  }
+  .filter-menu {
+    margin-top: 5rem;
+    margin-left: -1.5rem;
+    width: 20rem;
+  }
+  .card-container {
+    margin-top: 20rem;
+    width: 20rem;
+    margin-left: -1rem;
+  }
+}
+@media (min-width: 768px) {
+  .search-input {
+    margin-top: 3rem;
+    width: 55rem;
+  }
+  .main-container {
+    left: 1rem;
+    width: 58rem;
+    margin-left: 1rem;
+  }
+  .filter-menu {
+    margin-top: 3rem;
+  }
+  .card-container {
+    margin-top: 18rem;
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 1023px) {
+  .main-container {
+    left: 8rem;
+    width: 80rem;
+  }
+  .search-input {
+    margin-left: 1rem;
+    width: 70rem;
+  }
+}

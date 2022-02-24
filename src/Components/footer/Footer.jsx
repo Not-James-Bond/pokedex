@@ -1,18 +1,21 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
 function Footer() {
   return (
-    <Span>
-      <Div>Made with ❤️ for the PokéSpartans team Platzi Master</Div>
-      <Div>Our Team</Div>
-    </Span>
+    <FooterBody>
+      <FooterText>
+        Made with ❤️ for the PokéSpartans team Platzi Master
+      </FooterText>
+      <FooterText>Our Team</FooterText>
+    </FooterBody>
   );
 }
 
 export default Footer;
 
-const Span = styled.span`
+const FooterBody = styled.span`
   font-family: 'Karla';
   font-weight: bold;
   box-sizing: border-box;
@@ -36,7 +39,7 @@ const Span = styled.span`
   }
 `;
 
-const Div = styled.div`
+const FooterText = styled.div`
   padding-left: 6em;
   padding-right: 6em;
 

@@ -1,0 +1,29 @@
+@import '../../../theme/colors.scss';
+
+.stat-box {
+  background: $WHITE;
+  border-radius: 8px;
+  box-shadow: 4px 4px 24px $BLACK_TRANS_SHADOW;
+  height: auto;
+  width: 5.53rem;
+}
+
+.circle {
+  background: $WHITE;
+  border: 2px solid $BLACK;
+  border-radius: 50%;
+  color: $BLACK;
+  font: 1.25rem 'Karla', sans-serif;
+  font-weight: 700;
+  height: 1.52rem;
+  margin: 0.5rem auto;
+  padding: 0.44em;
+  text-align: center;
+  width: 1.52rem;
+}
+
+.stat-text {
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+}
