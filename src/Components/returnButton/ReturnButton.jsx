@@ -1,10 +1,13 @@
 import React from 'react';
-import '../../App.css';
+
 import { useNavigate } from 'react-router-dom';
+
+import '../../App.css';
+
 function ReturnButton() {
   const navigate = useNavigate();
   return (
-    <div className="ErrorPage-return-button" onClick={() => navigate(-1)}>
+    <div className="error-page-return-button" onClick={() => navigate(-1)}>
       <button className="return-button">Return</button>
     </div>
   );

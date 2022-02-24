@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@700&display=swap');
+@import '../../theme/colors.scss';
+
+.card {
+  background: $WHITE;
+  border-radius: 0.4rem;
+  display: flex;
+  height: 8.1rem;
+  width: 20rem;
+}
+.left-container {
+  display: block;
+  flex: 2;
+  height: 70%;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+.pokemon-name {
+  color: $EERIE_BLACK;
+  font-family: Karla;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: -1rem;
+  padding: 0.3rem;
+  text-align: center;
+  // text-shadow: 0.25rem 0.25rem 0.25rem $MINE_SHAFT_TRANS;
+}
+.right-container {
+  background: linear-gradient(180deg, $RIPE_LEMON 0%, #f2b807 100%);
+  border-radius: 0.4rem;
+}
+
+.pokemon-img {
+  height: 100%;
+  width: 10.6rem;
+  margin-top: -1rem;
+}
+.circle-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.circle {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 0.18rem solid $EERIE_BLACK;
+  border-radius: 50%;
+  line-height: 1.5rem;
+  margin-top: -0.3rem;
+}
+.circle-item {
+  color: $EERIE_BLACK;
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.activity {
+  color: $TUNDORA;
+  font-family: Karla;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 0.2rem;
+}
+.activity-item {
+  padding-left: 1.1rem;
+  display: inline;
+}
+.properties {
+  margin-left: 0.9rem;
+  margin-top: 0.4rem;
+}
+.property-grass {
+  background: $PASTEL_GREEN;
+  border-radius: 0.6rem;
+  box-shadow: inset 0px -2px 0px $WHITE_TRANS_SHADOW;
+  color: $EERIE_BLACK;
+  font-family: Roboto;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: normal;
+  margin-right: 0.6rem;
+  padding: 0.1rem 1rem 0.1rem;
+  text-align: center;
+}
+.property-defence {
+  background: $BRIGHT_TURQUOISE;
+  border-radius: 0.6rem;
+  box-shadow: inset 0px -2px 0px $WHITE_TRANS_SHADOW;
+
+  color: $EERIE_BLACK;
+
+  font-family: Roboto;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 0.8rem;
+  padding: 0.1rem 1rem 0.1rem;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .card {
+    height: 10rem;
+    width: 28rem;
+  }
+  .left-container {
+    width: 100%;
+  }
+  .pokemon-name {
+    font-size: 1.5rem;
+    margin-top: -0.6rem;
+    padding: 0.6rem;
+  }
+  .right-container {
+    width: 50%;
+  }
+
+  .pokemon-img {
+    height: 100%;
+    width: 100%;
+  }
+  .circle-container {
+    margin-left: 1.2rem;
+  }
+
+  .activity {
+    font-size: 0.8rem;
+    margin-left: 2.2rem;
+  }
+
+  .properties {
+    margin-left: 2.2rem;
+    margin-top: 0.9rem;
+  }
+  .property-grass {
+    font-size: 1.1rem;
+    padding: 0.2rem 1.25rem 0.3rem;
+  }
+  .property-defence {
+    font-size: 1.1rem;
+    padding: 0.2rem 1.25rem 0.3rem;
+  }
+}
