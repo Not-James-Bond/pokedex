@@ -1,6 +1,6 @@
 @import '../../../theme/colors.scss';
 
-.stat-box {
+.circle-stat {
   background: $WHITE;
   border-radius: 8px;
   box-shadow: 4px 4px 24px $BLACK_TRANS_SHADOW;
@@ -8,7 +8,7 @@
   width: 5.53rem;
 }
 
-.circle {
+.circular-stat {
   background: $WHITE;
   border: 2px solid $BLACK;
   border-radius: 50%;
@@ -17,7 +17,7 @@
   font-weight: 700;
   height: 1.52rem;
   margin: 0.5rem auto;
-  padding: 0.44em;
+  padding: 0.42em;
   text-align: center;
   width: 1.52rem;
 }
@@ -26,4 +26,5 @@
   font-size: 0.9em;
   font-weight: bold;
   text-align: center;
+  text-transform: capitalize;
 }

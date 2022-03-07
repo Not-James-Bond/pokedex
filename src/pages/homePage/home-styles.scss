@@ -1,18 +1,18 @@
 @import '../../theme/colors.scss';
 
-.homeBody-container {
+.home-body-container {
   background: linear-gradient(180deg, $RIPE_LEMON 0%, $CORN 100%);
   display: flex;
   flex-flow: row;
-  height: 92vh;
+  height: 91vh;
   padding-top: 14rem;
   width: 100vw;
 
   @media screen and (max-width: 769px) {
-    flex-flow: column nowrap;
     background-size: auto;
-    padding-bottom: 3rem;
+    flex-flow: column nowrap;
     min-height: 106rem;
+    padding-bottom: 3rem;
   }
   @media screen and (max-width: 426px) {
     min-height: 70rem;
@@ -22,25 +22,25 @@
   color: $BLACK;
   font-family: 'Karla', sans-serif;
   font-size: 4rem;
-  line-height: 6rem;
   letter-spacing: 0.2rem;
+  line-height: 6rem;
   margin: 0 10rem;
   max-width: 30rem;
 
   @media screen and (max-width: 769px) {
-    order: 2;
-    flex-flow: column nowrap;
     align-self: center;
-    text-align: center;
+    flex-flow: column nowrap;
+    font-size: 6rem;
+    height: 100em;
     letter-spacing: 0.3rem;
     line-height: 9rem;
-    height: 100em;
     max-width: 35rem;
-    font-size: 6rem;
+    order: 2;
+    text-align: center;
   }
   @media screen and (max-width: 426px) {
-    line-height: 5.8rem;
     font-size: 4rem;
+    line-height: 5.8rem;
     margin: 0 2rem;
     max-width: 20rem;
     text-align: center;
@@ -50,8 +50,8 @@
   color: $BLACK;
   font-family: 'Karla', sans-serif;
   font-size: 2rem;
-  line-height: 3.5rem;
   letter-spacing: 0.07rem;
+  line-height: 3.5rem;
   margin-top: 4rem;
 
   @media screen and (max-width: 769px) {
@@ -60,52 +60,54 @@
     margin-top: 2rem;
   }
   @media screen and (max-width: 426px) {
+    font-size: 1.4rem;
     font-weight: 500;
     line-height: 3.5rem;
     max-width: 20rem;
     text-align: center;
-    font-size: 1.4rem;
   }
 }
 .login-button {
-  margin-top: 2rem;
   background: $PASTEL_GREEN;
-  box-shadow: inset 0px -9px 0px $BLACK_TRANS_SHADOW;
   border-radius: 11px;
+  box-shadow: inset 0px -9px 0px $BLACK_TRANS_SHADOW;
+  cursor: pointer;
   font-family: Karla;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: bold;
-  font-size: 1.6rem;
   line-height: 2.5rem;
+  margin-top: 2rem;
   padding: 1rem 6rem;
   text-align: center;
-  cursor: pointer;
   @media screen and (max-width: 768px) {
     margin-top: 2.5rem;
     padding: 1.5rem 10rem;
   }
   @media screen and (max-width: 426px) {
-    padding: 1rem 7rem;
     font-size: 1.5rem;
+    padding: 1rem 7rem;
   }
 }
 .image-container {
-  margin-left: 1rem;
   align-self: right;
   flex-grow: 1;
+  margin-left: 1rem;
+  overflow-x: hidden;
 
   @media screen and (max-width: 768px) {
+    overflow-x: visible;
     align-self: center;
     order: 1;
   }
 }
 .banner-img {
-  margin-left: 4rem;
+  margin-left: 1.5rem;
   width: 100%;
 
   @media screen and (max-width: 768px) {
     align-self: center;
-    max-width: 90%;
     margin: 0 1.5rem;
+    max-width: 90%;
   }
 }

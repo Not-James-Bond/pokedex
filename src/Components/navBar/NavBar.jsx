@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
+import { NavLink as Link } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 
 import NavDropDown from './NavDropDown/NavDropDown';
-import { Nav, NavLink, Bars, NavMenu, NavLogo } from './NavBarStyle';
+import { NAVBAR_ITEMS } from '../../utils/constants';
 
-import logo from '../../assets/images/Logo.svg';
+import logo from '../../assets/images/pokemon-text.svg';
+
+import './navBar-styles.scss';
 
 function Navbar() {
   const [checkDropDownStatuts, setDropDownStatuts] = useState(false);
   const handleClick = () => setDropDownStatuts(!checkDropDownStatuts);
-  const navItems = ['Home', 'Pokedex', 'Legendaries', 'Documentation'];
+  const listItems = (item, key) => (
+    <Link
+      className="nav-link"
+      to={item === 'Home' ? '/' : '/' + item}
+      key={`item${key}`}>
+      {item}
+    </Link>
+  );
+
   return (
     <>
       {checkDropDownStatuts && (
@@ -17,21 +29,13 @@ function Navbar() {
           closeDropDown={setDropDownStatuts}
         />
       )}
-      <Nav>
-        <NavLink to="/">
-          <NavLogo src={logo} alt="PokeMon" />
-        </NavLink>
-        <Bars onClick={handleClick} />
-        <NavMenu>
-          {navItems.map((item, key) => {
-            return (
-              <NavLink to={item === 'Home' ? '/' : '/' + item} key={key}>
-                {item}
-              </NavLink>
-            );
-          })}
-        </NavMenu>
-      </Nav>
+      <nav className="nav">
+        <Link className="nav-link" to="/">
+          <img className="nav-logo" src={logo} alt="PokeMon" />
+        </Link>
+        <FaBars className="bars" onClick={handleClick} />
+        <div className="nav-menu">{NAVBAR_ITEMS.map(listItems)}</div>
+      </nav>
     </>
   );
 }

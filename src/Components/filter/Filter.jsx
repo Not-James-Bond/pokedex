@@ -1,70 +1,49 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import ListItemText from '@mui/material/ListItemText';
+import MenuItem from '@mui/material/MenuItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Select from '@mui/material/Select';
 
-import './Filter.scss';
+import { FILTER_NAMES } from '../../utils/constants';
 
-const ITEM_HEIGHT = 50;
-const ITEM_PADDING_TOP = 5;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 100,
-    },
-  },
-};
+import './filter-styles.scss';
 
-const names = [
-  'Fire',
-  'Normal',
-  'Electric',
-  'Water',
-];
+function Filter(props) {
+  const [personName, setPersonName] = useState([]);
 
- function Filter(props) {
-  const [personName, setPersonName] = React.useState([]);
-
-  const handleChange = (event) => {
+  const handleChange = event => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    setPersonName(typeof value === 'string' ? value.split(',') : value);
   };
 
+  const filterNames = name => (
+    <MenuItem key={name} value={name}>
+      <Checkbox checked={personName.indexOf(name) > -1} />
+      <ListItemText primary={name} />
+    </MenuItem>
+  );
+
   return (
-    <div >
-      <FormControl  className='form-container' sx={{ m: 1}} >
-        <InputLabel  className='label-text' >{props.labelName}</InputLabel>
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<OutlinedInput label={props.labelName}/>}
-          renderValue={(selected) => selected.join(', ')}
-          className = "select-box"
-        >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl className="form-container" sx={{ m: 1 }}>
+      <InputLabel className="label-text">{props.labelName}</InputLabel>
+      <Select
+        labelId="demo-multiple-checkbox-label"
+        id="demo-multiple-checkbox"
+        multiple
+        value={personName}
+        onChange={handleChange}
+        input={<OutlinedInput label={props.labelName} />}
+        renderValue={selected => selected.join(', ')}
+        className="select-box">
+        {FILTER_NAMES.map(filterNames)}
+      </Select>
+    </FormControl>
   );
 }
-export default Filter
+export default Filter;

@@ -1,43 +1,60 @@
 import React, { useState, useEffect } from 'react';
 
-import Footer from '../../Components/footer/Footer';
-import Navbar from '../../Components/navBar/NavBar';
-import Filter from '../../Components/filter/Filter';
+import Filter from '../../components/filter/Filter';
+import Footer from '../../components/footer/Footer';
+import Modal from '../../components/modal/Modal';
+import Navbar from '../../components/navBar/NavBar';
+import PokemonCard from '../../components/pokemonCard/PokemonCard';
 
-import { getPokemon, getAllPokemon } from '../../utils/PokedexServices';
-import PokemonCard from '../../Components/pokemonCard/PokemonCard';
+import { fetchAllPokemon } from '../../utils/api';
+import { FILTER_TEXT } from '../../utils/constants';
 
-import './Pokedex.scss';
+import './pokedex-styles.scss';
 
 function Pokedex() {
   const [pokemonData, setPokemonData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(undefined);
-  const initialURL = 'https://pokeapi.co/api/v2/pokemon?limit=9';
+  const [pokeName, setPokeName] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isModalOpen, toggleIsModalOpen] = useState(false);
+
+  const toggleModalStatus = name => {
+    setPokeName(name);
+    toggleIsModalOpen(!isModalOpen);
+  };
+
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
-        let response = await getAllPokemon(initialURL);
-        await loadPokemon(response.results);
-      } catch (error) {
-        setError(error.message || 'Something went wrong');
+        const data = await fetchAllPokemon();
+        setPokemonData(data);
+      } catch (e) {
+        setError(e.message || 'Something went wrong');
+        console.error('error: ', error);
       }
-      setLoading(false);
-    }
+      setIsLoading(false);
+    };
     fetchData();
   }, []);
-
-  const loadPokemon = async data => {
-    let _pokemonData = await Promise.all(
-      data.map(async pokemon => {
-        let pokemonRecord = await getPokemon(pokemon);
-        return pokemonRecord;
-      })
-    );
-    setPokemonData(_pokemonData);
-  };
+  const listPokemonCard = (pokemon, index) => (
+    <PokemonCard
+      pokemon={pokemon}
+      handleOnClick={toggleModalStatus}
+      key={`pokemonCard${index}`}
+    />
+  );
+  const listFilter = (text, index) => (
+    <Filter labelName={text} key={`filter${index}`} />
+  );
   return (
     <>
+      {isModalOpen && (
+        <Modal
+          pokemonName={pokeName}
+          closeModal={toggleIsModalOpen}
+          modalState={isModalOpen}
+        />
+      )}
       <Navbar />
       <div className="main-container">
         <div className="search-filter">
@@ -52,25 +69,21 @@ function Pokedex() {
               placeholder="Encuentra tu pokemons..."
               className="search-input"></input>
           </div>
-          <div className="filter-menu">
-            <Filter className="filter-component" labelName="Tipo" />
-            <Filter className="filter-component" labelName="Ataqui" />
-            <Filter className="filter-component" labelName="Experiencia" />
-          </div>
+          <div className="filter-menu">{FILTER_TEXT.map(listFilter)}</div>
+          <button className="filter-button">Filter</button>
         </div>
         <div className="card-container">
           {error ? (
-            <h1>{error}</h1>
-          ) : loading ? (
+            (window.location.href = '/ErrorPage')
+          ) : isLoading ? (
             <h1 style={{ textAlign: 'center' }}>Loading...</h1>
           ) : (
-            <div className="grid-container">
-              {pokemonData.map((pokemon, i) => {
-                return <PokemonCard pokemon={pokemon} key={i} />;
-              })}
-            </div>
+            pokemonData.length && (
+              <div className="grid-container">
+                {pokemonData.map(listPokemonCard)}
+              </div>
+            )
           )}
-          {}
         </div>
       </div>
       <Footer />

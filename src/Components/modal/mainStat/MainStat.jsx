@@ -1,20 +1,19 @@
 import React from 'react';
-
 import { ProgressBar } from 'react-bootstrap';
 
-import { capitalize } from '../../../utils/utils';
-
-import '../Modal.scss';
-import './MainStatStyle.scss';
+import './mainStat-styles.scss';
+import '../modal-styles.scss';
 
 function StatContainer(props) {
-  const { name, stats } = props;
+  const { stats, color } = props;
+  const statType = stats && stats.stat.name;
+  const variant = color === 'green' ? 'success' : 'warning';
   return (
-    <div className={`${name}-container`}>
-      <div className="statHeading">{capitalize(stats && stats.stat.name)}</div>
+    <div className={`${statType}-container`}>
+      <div className="stat-heading">{statType}</div>
       <div className="stat">{stats && stats.base_stat}</div>
       <div className="progressBar">
-        <ProgressBar now={stats && stats.base_stat} />
+        <ProgressBar variant={`${variant}`} now={stats.base_stat} />
       </div>
     </div>
   );

@@ -1,41 +1,18 @@
 import React from 'react';
 
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import Footer from '../../Components/footer/Footer';
-import Navbar from '../../Components/navBar/NavBar';
-import provider from '../../auth/firebase';
+import Footer from '../../components/footer/Footer';
+import Navbar from '../../components/navBar/NavBar';
+import { signInWithFirebase } from '../../auth/firebase';
 
-import './home-style.scss';
+import banner from '../../assets/images/banner-pikachu.svg';
 
-import banner from '../../assets/images/Banner.svg';
-
-const signInWithFirebase = () => {
-  const auth = getAuth();
-  signInWithPopup(auth, provider)
-    .then(res => {
-      console.log(res);
-      const credential = GoogleAuthProvider.credentialFromResult(res);
-      const token = credential.accessToken;
-      // // The signed-in user info.
-      // const user = res.user;
-    })
-    .catch(err => {
-      console.log(err);
-      // // Handle Errors here.
-      // const errorCode = err.code;
-      // const errorMessage = err.message;
-      // // The email of the user's account used.
-      // const email = err.email;
-      // // The AuthCredential type that was used.
-      // const credential = GoogleAuthProvider.credentialFromError(err);
-    });
-};
+import './home-styles.scss';
 
 function Home() {
   return (
     <>
       <Navbar />
-      <div className="homeBody-container">
+      <div className="home-body-container">
         <div className="text-container">
           <b>Find</b> all your favorite <b>Pokemon</b>
           <p className="description">

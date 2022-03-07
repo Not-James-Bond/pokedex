@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import Home from './pages/homePage/Home';
 import Pokedex from './pages/pokedex/Pokedex';
 import ErrorPage from './pages/errorPage/ErrorPage';
-import ModalPage from './pages/modalPage/ModalPage';
 
-import './Components/modal/mainStat/MainStatStyle.scss';
-import './styles/ProgressBarStyle.scss';
+import './styles/progressBar-styles.scss';
 
 function App() {
   const [isUserSignedIn, setUserSignedIn] = useState(false);
@@ -20,28 +18,23 @@ function App() {
       return setUserSignedIn(true);
     } else return setUserSignedIn(false);
   });
-  // We can do Skip any pages like Home if user is logged in
-  if (isUserSignedIn === true) {
-    return (
-      <>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pokedex" element={<Pokedex />} exact />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </>
-    );
-  } else
-    return (
-      <>
-        <Routes>
-          <Route path="/" element={<Home />} exact />
-          <Route path="/Pokedex" element={<Pokedex />} />
-          <Route path="/Legendaries" element={<ModalPage />} /> //To Test Modal
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </>
-    );
+
+  //Disabling below isUserSignedIn check since we need to call auth.logout() to go view Home page which isn't implemented
+  return (
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            // isUserSignedIn ? <Pokedex /> :
+            <Home />
+          }
+        />
+        <Route path="/pokedex" element={<Pokedex />} exact />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;

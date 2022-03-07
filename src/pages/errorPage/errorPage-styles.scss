@@ -1,65 +1,59 @@
 @import '../../theme/colors.scss';
 
-.error-page {
+.error-page-container {
   align-items: center;
   background: $PUNCH;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 50rem;
   justify-content: center;
-  left: 0%;
-  top: 0%;
   width: 100%;
   .error-404-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     height: 30rem;
-    margin-top: 2rem;
     position: relative;
     width: 100%;
   }
 }
 .error-404 {
-  height: 25rem;
-  width: 100%;
-  justify-content: center;
-  filter: drop-shadow(4px 4px 24px rgba(1, 17, 38, 0.2));
-  position: absolute;
+  align-items: center;
+  color: $MINE_SHAFT_TRANS;
+  display: flex;
+  filter: drop-shadow(4px 4px 24px $BLACK_TRANS_SHADOW);
   font-family: Karla;
+  font-size: 38rem;
   font-style: normal;
   font-weight: bold;
-  font-size: 38rem;
-  display: flex;
-  align-items: center;
+  height: 25rem;
+  justify-content: center;
   letter-spacing: 4px;
-  color: rgba(0, 0, 0, 0.5);
   margin-top: 5rem;
+  position: absolute;
+  width: 100%;
 }
 .team-rocket-image {
   grid-column: 3/4;
-  height: auto;
-  margin-top: 1rem;
-  width: 40rem;
   grid-row: 1/2;
+  height: auto;
+  width: 40rem;
   z-index: 1;
 }
 
-.error-msg {
-  margin-top: 5rem;
-
-  .error-msg-para {
+  .error-msg-paragraph {
     color: $BLACK;
     font-family: Karla;
     font-size: 3.5rem;
     font-style: normal;
     font-weight: bold;
-    line-height: 2rem;
+    text-align: center;
+    margin-top: 5rem;
     .span-error {
-      color: white;
+      color: $WHITE;
     }
   }
-}
-.error-page-button-container {
+
+.error-page-return-button {
   background: $CORN;
   border-radius: 0.5rem;
   box-shadow: inset 0px -9px 0px $WHITE_TRANS_SHADOW;
@@ -83,37 +77,31 @@
 }
 
 @media (max-width: 1024px) {
-  .error-page {
+  .error-page-container {
     height: 64rem;
   }
   .team-rocket-image {
-    margin-top: -3rem;
     width: 40rem;
   }
   .error-404 {
-    margin-top: 1rem;
-    width: 100%;
-    justify-content: center;
     font-size: 30rem;
+    justify-content: center;
+    width: 100%;
   }
 }
 @media (max-width: 425px) {
   .team-rocket-image {
-    margin-top: 5rem;
+    margin-top: 9rem;
     width: 20rem;
   }
   .error-404 {
-    margin-top: 1rem;
-    width: 100%;
-    justify-content: center;
     font-size: 15rem;
+    justify-content: center;
+    width: 100%;
   }
-  .error-msg {
-    margin-top: -10rem;
-
-    .error-msg-para {
-      padding: 6rem;
+    .error-msg-paragraph {
       font-size: 2rem;
+      padding: 6rem;
     }
   }
-}
+

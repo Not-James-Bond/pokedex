@@ -1,26 +1,27 @@
 import React from 'react';
 
-import ReturnButton from '../../Components/returnButton/ReturnButton';
+import { useNavigate } from 'react-router-dom';
 
-import './ErrorPage.scss';
+import RocketImg from '../../assets/images/team-rocket.svg';
 
-import RocketImg from '../../assets/images/ImgTeamRocket.svg';
+import '../../App.css';
+import './errorPage-styles.scss';
 
 function ErrorPage() {
+  const navigate = useNavigate();
+  const changeNavigate = () => navigate(-1);
   return (
-    <div className="error-page">
+    <div className="error-page-container">
       <div className="error-404-container">
-        <p className='error-404'>404</p>
+        <p className="error-404">404</p>
         <img className="team-rocket-image" src={RocketImg} alt="Team Rocket" />
       </div>
-      <div className="error-msg">
-        <p className="error-msg-para">
-          <span className="span-error">The rocket team</span> has won this time
-        </p>
+      <p className="error-msg-paragraph">
+        <span className="span-error">The rocket team</span> has won this time
+      </p>
+      <div className="error-page-return-button" onClick={changeNavigate}>
+        <button className="return-button">Return</button>
       </div>
-      <span className="error-page-button-container">
-        <ReturnButton />
-      </span>
     </div>
   );
 }

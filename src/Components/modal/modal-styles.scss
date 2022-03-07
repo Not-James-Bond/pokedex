@@ -10,7 +10,7 @@ html {
   }
 }
 
-.body-container {
+.modal-body-container {
   align-items: center;
   background-color: $MINE_SHAFT_TRANS;
   display: flex;
@@ -32,7 +32,7 @@ html {
   z-index: 1000;
   @media screen and (max-width: 426px) {
     height: 100vh;
-    width: 100vw;
+    width: 99.9vw;
   }
 }
 
@@ -54,9 +54,9 @@ html {
   top: 0%;
   width: auto;
   @media screen and (max-width: 426px) {
-    position: fixed;
     left: 0.5rem;
     margin-left: 0;
+    position: fixed;
     top: 0.5rem;
   }
 }
@@ -69,8 +69,8 @@ html {
   text-align: center;
   z-index: 5;
   @media screen and (max-width: 426px) {
-    height: 100vh;
     flex-direction: column;
+    height: 100vh;
   }
 }
 
@@ -78,46 +78,21 @@ html {
   background: linear-gradient(270deg, $TALL_POPPY 0.15%, $PUNCH 100%);
   border-radius: 16px;
   box-shadow: 4px 4px 8px $BLACK_TRANS_SHADOW;
-  height: 100%;
   width: 27.4rem;
   @media screen and (max-width: 426px) {
-    height: 40%;
-    width: 100%;
+    height: 40vh;
+    width: 100vw;
   }
 }
 
 .poke-img {
   height: 21.5rem;
   margin: 0 auto;
-  margin-top: 7.54%;
-  width: 22.2rem;
-}
-
-@mixin typeStyle {
-  border-radius: 11px;
-  box-shadow: inset 0px -2px 0px $WHITE_TRANS_SHADOW;
-  font-family: Roboto;
-  font-size: 1em;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 0.7em;
-  padding: 0.12em 0.5em;
-  text-align: center;
-  @media screen and (max-width: 426px) {
-    margin-top: 3em;
+  margin-top: 1.9rem;
+  width: auto;
+  @media screen and (max-width: 376px) {
+    height: 16rem;
   }
-}
-
-.pokemon-type-container1 {
-  @include typeStyle;
-  background: $PASTEL_GREEN;
-  margin-left: 60%;
-}
-
-.pokemon-type-container2 {
-  @include typeStyle;
-  background: $BRIGHT_TURQUOISE;
-  margin-left: 3%;
 }
 
 .details-container {
@@ -146,7 +121,7 @@ html {
 
 .pokemon-index {
   background: $CORN;
-  border-radius: 60%;
+  border-radius: 16px;
   color: $BLACK;
   font-family: 'Karla';
   font-size: 1.2rem;
@@ -167,7 +142,7 @@ html {
   flex-direction: column;
   margin-bottom: 1.69rem;
   margin-top: 1.84rem;
-  padding: 1em;
+  padding: 1rem;
   width: 18.05rem;
   @media screen and (max-width: 426px) {
     height: 5rem;
@@ -194,6 +169,8 @@ html {
 }
 .ability {
   @include pStyle;
+  text-align: left;
+  text-transform: capitalize;
   @media screen and (max-width: 426px) {
     padding-left: 0.2rem;
   }
@@ -207,7 +184,7 @@ html {
   flex-direction: row;
   height: auto;
   max-width: 27rem;
-  padding: 0.8em;
+  padding: 0.8rem;
   @media screen and (max-width: 426px) {
     flex-direction: column;
   }
@@ -229,23 +206,12 @@ html {
     width: 100%;
   }
 }
-
-.HP-container {
+.hp-container {
   @include hpStyle;
 }
-.Speed-container {
+.speed-container {
   @include hpStyle;
 }
-// @mixin XpHpStyle {
-//   align-self: flex-start;
-// }
-// .DivContainer {
-//   @include XpHpStyle;
-// }
-// .Progress {
-//   margin-right: 'auto';
-//   text-align: left;
-// }
 .progressBar {
   height: auto;
   margin-top: 0.2rem;
