@@ -1,0 +1,28 @@
+@import '../../../theme/colors.scss';
+
+@mixin typeStyle {
+  border-radius: 11px;
+  box-shadow: inset 0px -2px 0px $WHITE_TRANS_SHADOW;
+  font-family: Roboto;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 0.7em;
+  padding: 0.12em 0.5em;
+  text-align: center;
+  @media screen and (max-width: 426px) {
+    margin-top: 3em;
+  }
+}
+
+.pokemon-type-container-primary {
+  @include typeStyle;
+  background: $PASTEL_GREEN;
+  margin-left: 60%;
+}
+
+.pokemon-type-container-secondary {
+  @include typeStyle;
+  background: $BRIGHT_TURQUOISE;
+  margin-left: 3%;
+}
