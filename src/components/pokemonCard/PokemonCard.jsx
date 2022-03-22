@@ -9,9 +9,7 @@ function PokemonCard(props) {
   const { height, image, name, type, weight } = pokemon;
 
   const pokemonType = (type, index) => (
-    <div
-      className={index === 0 ? 'property-grass' : 'property-defence'}
-      key={`pokeType${index}`}>
+    <div className={index === 0 ? 'property-grass' : 'property-defence'} key={`pokeType${index}`}>
       {capitalize(type)}
     </div>
   );
@@ -35,7 +33,7 @@ function PokemonCard(props) {
           <div className="properties">{type.map(pokemonType)}</div>
         </div>
         <div className="right-container">
-          <img className="pokemon-img" src={image} alt="Pokemon Image" />
+          <img className="pokemon-img" src={image} alt="Pokemon" />
         </div>
       </div>
     </>

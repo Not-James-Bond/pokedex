@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import MainStat from './mainStat/MainStat';
 import PokemonType from './pokemonType/PokemonType';
@@ -24,11 +24,7 @@ function Modal(props) {
   };
 
   const pokemonTypeRender = (type, index) => (
-    <PokemonType
-      type={type.type}
-      isPrimaryType={index === 0}
-      key={`pokemonType${index}`}
-    />
+    <PokemonType type={type.type} isPrimaryType={index === 0} key={`pokemonType${index}`} />
   );
 
   const getAllAbilities = abilities => abilities.ability.name;
@@ -38,24 +34,23 @@ function Modal(props) {
     this.src = { pokeballFallback };
   };
 
-  const getData = useCallback(async () => {
-    try {
-      const data = await fetchModalData(pokemonName);
-      setPokemonDetails(data);
-    } catch (err) {
-      setFetchStatus(false);
-    }
-  }, [pokemonName]);
-
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await fetchModalData(pokemonName);
+        setPokemonDetails(data);
+      } catch (err) {
+        setFetchStatus(false);
+      }
+    };
+
     getData();
     return () => {
       setPokemonDetails([]);
     };
   }, [pokemonName]);
 
-  const { name, abilities, game_indices, sprites, stats, types } =
-    pokemonDetails;
+  const { name, abilities, game_indices, sprites, stats, types } = pokemonDetails;
 
   return (
     <>
@@ -63,20 +58,13 @@ function Modal(props) {
         <div className="modal-body-container">
           <div className="modal-container">
             <div className="close-icon-container">
-              <img
-                className="img-close"
-                src={closeIcon}
-                onClick={toggleModalState}
-                alt="Close"
-              />
+              <img className="img-close" src={closeIcon} onClick={toggleModalState} alt="Close" />
             </div>
             <div className="modal-card-container">
               <div className="img-container">
                 <img
                   className="poke-img"
-                  src={
-                    sprites && sprites?.other[OFFICIAL_ARTWORK].front_default
-                  }
+                  src={sprites && sprites?.other[OFFICIAL_ARTWORK].front_default}
                   onError={handleImageError}
                   alt="Pokemon Img"
                 />
@@ -86,17 +74,13 @@ function Modal(props) {
                 <div className="name-container">
                   {capitalize(name)}
                   {game_indices && (
-                    <span className="pokemon-index">
-                      {game_indices[0].game_index}
-                    </span>
+                    <span className="pokemon-index">{game_indices[0].game_index}</span>
                   )}
                 </div>
                 <div className="abilities-container">
                   <p className="ability-heading">Abilities</p>
                   {abilities && (
-                    <p className="ability">
-                      {abilities.map(getAllAbilities).join(' - ')}
-                    </p>
+                    <p className="ability">{abilities.map(getAllAbilities).join(' - ')}</p>
                   )}
                 </div>
                 {stats && (

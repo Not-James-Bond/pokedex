@@ -30,30 +30,20 @@ function Pokedex() {
         setPokemonData(data);
       } catch (e) {
         setError(e.message || 'Something went wrong');
-        console.error('error: ', error);
+        console.error('error: ', e);
       }
       setIsLoading(false);
     };
     fetchData();
   }, []);
   const listPokemonCard = (pokemon, index) => (
-    <PokemonCard
-      pokemon={pokemon}
-      handleOnClick={toggleModalStatus}
-      key={`pokemonCard${index}`}
-    />
+    <PokemonCard pokemon={pokemon} handleOnClick={toggleModalStatus} key={`pokemonCard${index}`} />
   );
-  const listFilter = (text, index) => (
-    <Filter labelName={text} key={`filter${index}`} />
-  );
+  const listFilter = (text, index) => <Filter labelName={text} key={`filter${index}`} />;
   return (
     <>
       {isModalOpen && (
-        <Modal
-          pokemonName={pokeName}
-          closeModal={toggleIsModalOpen}
-          modalState={isModalOpen}
-        />
+        <Modal pokemonName={pokeName} closeModal={toggleIsModalOpen} modalState={isModalOpen} />
       )}
       <Navbar />
       <div className="main-container">
@@ -79,9 +69,7 @@ function Pokedex() {
             <h1 style={{ textAlign: 'center' }}>Loading...</h1>
           ) : (
             pokemonData.length && (
-              <div className="grid-container">
-                {pokemonData.map(listPokemonCard)}
-              </div>
+              <div className="grid-container">{pokemonData.map(listPokemonCard)}</div>
             )
           )}
         </div>
